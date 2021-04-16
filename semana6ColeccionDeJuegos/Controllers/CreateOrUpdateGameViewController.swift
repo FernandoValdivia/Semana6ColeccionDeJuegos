@@ -1,10 +1,3 @@
-//
-//  CreateOrUpdateGameViewController.swift
-//  semana6ColeccionDeJuegos
-//
-//  Created by mbtec22 on 4/15/21.
-//
-
 import UIKit
 
 class CreateOrUpdateGameViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -12,6 +5,8 @@ class CreateOrUpdateGameViewController: UIViewController, UINavigationController
     @IBOutlet weak var btnCameraOrGalery: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tituloTextField: UITextField!
+    @IBOutlet weak var btnUpdate: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
     
     var album:Album?=nil
     
@@ -21,14 +16,24 @@ class CreateOrUpdateGameViewController: UIViewController, UINavigationController
         super.viewDidLoad()
         imagePicker.delegate = self
         btnCameraOrGalery.image = UIImage(named: "camera")?.withRenderingMode(.alwaysOriginal)
+        btnUpdate.layer.cornerRadius = 10
+        btnDelete.layer.cornerRadius = 10
+        
+        if album != nil {
+            imageView.image = UIImage(data: (album!.imagen!) as Data)
+            tituloTextField.text = album!.titulo
+            btnUpdate.setTitle("Actualizar", for: .normal)
+            btnUpdate.layer.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }else{
+            btnDelete.isHidden = true
+        }
     }
-    
     
     @IBAction func onClickAlertCameraOrGalery(_ sender: UIBarButtonItem) {
         
-        let alert = UIAlertController(title: "Semana 06", message: "Quieres acceder a la camara o galería?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Semana 06", message: "Quieres acceder a la cámara o galería?", preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Camara", style: .default, handler: {
+        alert.addAction(UIAlertAction(title: "Cámara", style: .default, handler: {
             _ in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -53,12 +58,25 @@ class CreateOrUpdateGameViewController: UIViewController, UINavigationController
     }
     
     @IBAction func addTapped(_ sender: UIButton) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let album = Album(context: context)
-        album.titulo = tituloTextField.text
-        album.imagen = imageView.image!.pngData()! as NSData as Data
+        
+        if album != nil {
+            album!.titulo = tituloTextField.text
+            album!.imagen = imageView.image!.pngData()! as NSData? as Data?
+        }else{
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let album = Album(context: context)
+            album.titulo = tituloTextField.text
+            album.imagen = imageView.image!.pngData()! as NSData? as Data?
+        }
+       
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }
     
+    @IBAction func deleteTapped(_ sender: UIButton) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(album!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController?.popViewController(animated: true)
+    }
 }

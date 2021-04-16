@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  semana6ColeccionDeJuegos
 //
-//  Created by mbtec22 on 4/15/21.
+//  Created by FernandoValdivia on 4/15/21.
 //
 
 import UIKit
@@ -38,6 +38,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let album = albums[indexPath.row]
+        performSegue(withIdentifier: "albumSegue", sender: album)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! CreateOrUpdateGameViewController
+        nextVC.album = sender as? Album
+    }
 }
 

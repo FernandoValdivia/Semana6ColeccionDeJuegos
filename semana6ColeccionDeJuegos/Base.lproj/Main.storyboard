@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="gfg-fx-Ne0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8AV-aL-WCc">
                             <connections>
-                                <segue destination="kPv-4e-Vny" kind="show" id="8Xw-hh-Txx"/>
+                                <segue destination="kPv-4e-Vny" kind="show" identifier="albumSegue" id="8Xw-hh-Txx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -53,20 +53,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="montain" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-of-9ZH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="montain" translatesAutoresizingMaskIntoConstraints="NO" id="HBh-of-9ZH">
                                 <rect key="frame" x="57" y="128" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="R80-dd-i2c"/>
                                     <constraint firstAttribute="width" constant="300" id="tKw-xz-yG5"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jcn-kt-hcP">
-                                <rect key="frame" x="40" y="448" width="334" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jcn-kt-hcP">
+                                <rect key="frame" x="40" y="458" width="334" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2m-Hi-ibG">
-                                <rect key="frame" x="20" y="510" width="374" height="39"/>
+                                <rect key="frame" x="20" y="520" width="374" height="39"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Agregar">
@@ -76,17 +76,31 @@
                                     <action selector="addTapped:" destination="kPv-4e-Vny" eventType="touchUpInside" id="23t-3u-A0l"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ky9-aX-A3E">
+                                <rect key="frame" x="20" y="574" width="374" height="36"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Eliminar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteTapped:" destination="kPv-4e-Vny" eventType="touchUpInside" id="J8p-Nj-bSc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OvT-vJ-3RZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OvT-vJ-3RZ" firstAttribute="trailing" secondItem="Jcn-kt-hcP" secondAttribute="trailing" constant="40" id="5P7-uo-Ixz"/>
+                            <constraint firstItem="OvT-vJ-3RZ" firstAttribute="trailing" secondItem="Ky9-aX-A3E" secondAttribute="trailing" constant="20" id="M7u-7i-h5Z"/>
                             <constraint firstItem="OvT-vJ-3RZ" firstAttribute="trailing" secondItem="o2m-Hi-ibG" secondAttribute="trailing" constant="20" id="S7N-9K-l9C"/>
                             <constraint firstItem="HBh-of-9ZH" firstAttribute="centerX" secondItem="D6F-8w-527" secondAttribute="centerX" id="aAT-AO-upf"/>
-                            <constraint firstItem="Jcn-kt-hcP" firstAttribute="top" secondItem="HBh-of-9ZH" secondAttribute="bottom" constant="20" id="b9I-7Z-q0I"/>
+                            <constraint firstItem="Jcn-kt-hcP" firstAttribute="top" secondItem="HBh-of-9ZH" secondAttribute="bottom" constant="30" id="b9I-7Z-q0I"/>
                             <constraint firstItem="HBh-of-9ZH" firstAttribute="top" secondItem="OvT-vJ-3RZ" secondAttribute="top" constant="40" id="dmW-JK-R4E"/>
                             <constraint firstItem="o2m-Hi-ibG" firstAttribute="top" secondItem="Jcn-kt-hcP" secondAttribute="bottom" constant="28" id="eV3-AU-zFd"/>
                             <constraint firstItem="o2m-Hi-ibG" firstAttribute="leading" secondItem="OvT-vJ-3RZ" secondAttribute="leading" constant="20" id="hW2-nn-5gr"/>
+                            <constraint firstItem="Ky9-aX-A3E" firstAttribute="leading" secondItem="OvT-vJ-3RZ" secondAttribute="leading" constant="20" id="qCE-hb-Tcp"/>
+                            <constraint firstItem="Ky9-aX-A3E" firstAttribute="top" secondItem="o2m-Hi-ibG" secondAttribute="bottom" constant="15" id="yID-Ok-qQS"/>
                             <constraint firstItem="Jcn-kt-hcP" firstAttribute="leading" secondItem="OvT-vJ-3RZ" secondAttribute="leading" constant="40" id="yrv-Wv-5Rq"/>
                         </constraints>
                     </view>
@@ -99,6 +113,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnCameraOrGalery" destination="0ss-z1-KaH" id="eut-Sn-xtE"/>
+                        <outlet property="btnDelete" destination="Ky9-aX-A3E" id="hZ8-FI-FwI"/>
+                        <outlet property="btnUpdate" destination="o2m-Hi-ibG" id="5jX-PN-umE"/>
                         <outlet property="imageView" destination="HBh-of-9ZH" id="zXz-hK-BoT"/>
                         <outlet property="tituloTextField" destination="Jcn-kt-hcP" id="a3U-H6-sW9"/>
                     </connections>
@@ -131,6 +147,9 @@
         <image name="montain" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
