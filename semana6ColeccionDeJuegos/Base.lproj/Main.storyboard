@@ -48,7 +48,7 @@
         <!--Create Or Update Game View Controller-->
         <scene sceneID="6KI-DZ-2W1">
             <objects>
-                <viewController id="kPv-4e-Vny" customClass="CreateOrUpdateGameViewController" customModule="semana6ColeccionDeJuegos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kPv-4e-Vny" customClass="CreateOrUpdateGameViewController" customModule="semana6ColeccionDeJuegos" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D6F-8w-527" customClass="Album">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

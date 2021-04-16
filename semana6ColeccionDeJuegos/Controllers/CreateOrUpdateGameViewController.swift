@@ -45,7 +45,7 @@ class CreateOrUpdateGameViewController: UIViewController, UINavigationController
             self.present(self.imagePicker, animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive , handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
